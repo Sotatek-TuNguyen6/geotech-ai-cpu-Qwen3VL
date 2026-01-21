@@ -37,7 +37,7 @@ def main():
     print("[INFO] Loading model weights (this may take several minutes on CPU)...", flush=True)
     model = Qwen3VLForConditionalGeneration.from_pretrained(
         MODEL_ID,
-        torch_dtype=torch.float32,
+        torch_dtype=torch.float16,
         low_cpu_mem_usage=True,
         trust_remote_code=True,
     ).to(device).eval()
