@@ -27,13 +27,21 @@ def main():
 
     device = torch.device("cpu")
 
+    print(f"[INFO] Loading model: {MODEL_ID}", flush=True)
+    print(f"[INFO] Device: {device}", flush=True)
+    
+    print("[INFO] Loading processor...", flush=True)
     processor = AutoProcessor.from_pretrained(MODEL_ID, trust_remote_code=True)
+    print("[INFO] Processor loaded!", flush=True)
+    
+    print("[INFO] Loading model weights (this may take several minutes on CPU)...", flush=True)
     model = Qwen3VLForConditionalGeneration.from_pretrained(
         MODEL_ID,
         torch_dtype=torch.float32,
         low_cpu_mem_usage=True,
         trust_remote_code=True,
     ).to(device).eval()
+    print("[INFO] Model loaded successfully!", flush=True)
 
     # paths = sorted(
     #     [p for p in IN_DIR.iterdir() if p.is_file() and p.suffix.lower() in IMG_EXTS]
