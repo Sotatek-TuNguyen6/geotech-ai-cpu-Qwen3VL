@@ -13,11 +13,9 @@ ENV OMP_NUM_THREADS=1
 
 RUN pip install --no-cache-dir -U pip setuptools wheel \
  && pip install --no-cache-dir \
-    "git+https://github.com/huggingface/transformers" \
- && pip install --no-cache-dir \
     torch torchvision --index-url https://download.pytorch.org/whl/cpu \
  && pip install --no-cache-dir \
-    accelerate safetensors pillow tqdm huggingface_hub qwen-vl-utils
+    transformers>=4.45.0 accelerate safetensors pillow tqdm huggingface_hub qwen-vl-utils
 
 WORKDIR /app
 COPY run_batch.py /app/run_batch.py
