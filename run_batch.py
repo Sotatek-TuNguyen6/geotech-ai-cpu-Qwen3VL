@@ -92,9 +92,11 @@ def main():
             collected = []
 
             for piece in streamer:
+                print(piece, end="", flush=True)  # Hiển thị token ra màn hình
                 if ttft is None:
                     ttft = time.perf_counter() - start
                 collected.append(piece)
+            print() # Xuống dòng sau khi xong
 
             t.join()
             total = time.perf_counter() - start
